@@ -4,7 +4,9 @@ The canonical benchmark documents. Every serialbench language harness — Ruby,
 Python, C/C++ — measures these **byte-identical** files; only then are
 cross-language numbers comparable.
 
-- `{small,medium,large}.{xml,json,yaml,toml}` — the twelve documents
+- `{small,medium,large}.{xml,json,yaml,toml,html}` — the fifteen documents
+- `schema.rng` — RelaxNG grammar covering all three XML shapes (validation benchmark)
+- `transform.xsl` — XSLT 1.0 stylesheet over the same shapes (transform benchmark; leptris additionally supports XSLT 3.0)
 - `SHA256SUMS` — integrity; harnesses may verify before running
 - The `large` TOML fixture uses the first 1,000 records (the Ruby
   generator's documented subset); all other formats carry the full set

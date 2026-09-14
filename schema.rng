@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <choice>
+      <ref name="config"/>
+      <ref name="users"/>
+      <ref name="dataset"/>
+    </choice>
+  </start>
+
+  <define name="config">
+    <element name="config">
+      <element name="database">
+        <element name="host"><text/></element>
+        <element name="port"><data type="integer"/></element>
+        <element name="name"><text/></element>
+        <element name="user"><text/></element>
+        <element name="password"><text/></element>
+      </element>
+      <element name="cache">
+        <element name="enabled"><data type="boolean"/></element>
+        <element name="ttl"><data type="integer"/></element>
+      </element>
+    </element>
+  </define>
+
+  <define name="users">
+    <element name="users">
+      <oneOrMore>
+        <ref name="user"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="user">
+    <element name="user">
+      <attribute name="id"><data type="integer"/></attribute>
+      <element name="name"><text/></element>
+      <element name="email"><text/></element>
+      <element name="created_at"><text/></element>
+      <element name="profile">
+        <element name="age"><data type="integer"/></element>
+        <element name="city"><text/></element>
+        <element name="preferences">
+          <element name="theme"><text/></element>
+          <element name="notifications"><data type="boolean"/></element>
+        </element>
+      </element>
+    </element>
+  </define>
+
+  <define name="dataset">
+    <element name="dataset">
+      <element name="header">
+        <element name="created"><text/></element>
+        <element name="count"><data type="integer"/></element>
+        <element name="format"><text/></element>
+      </element>
+      <element name="records">
+        <oneOrMore>
+          <ref name="record"/>
+        </oneOrMore>
+      </element>
+    </element>
+  </define>
+
+  <define name="record">
+    <element name="record">
+      <attribute name="id"><data type="integer"/></attribute>
+      <element name="timestamp"><text/></element>
+      <element name="data">
+        <element name="field1"><text/></element>
+        <element name="field2"><data type="integer"/></element>
+        <element name="field3"><text/></element>
+        <element name="nested">
+          <oneOrMore><element name="item"><text/></element></oneOrMore>
+        </element>
+      </element>
+      <element name="metadata">
+        <element name="source"><text/></element>
+        <element name="version"><text/></element>
+        <element name="checksum"><text/></element>
+      </element>
+    </element>
+  </define>
+</grammar>
