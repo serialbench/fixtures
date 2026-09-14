@@ -1,0 +1,12 @@
+[config]
+
+[config.database]
+host = "localhost"
+port = 5432
+name = "myapp"
+user = "admin"
+password = "secret"
+
+[config.cache]
+enabled = true
+ttl = 3600
