@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/format-assertion",
+  "title": "canonical users document (medium)",
+  "type": "object",
+  "required": ["users"],
+  "properties": {
+    "users": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "email", "created_at", "profile"],
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "created_at": { "type": "string" },
+          "profile": {
+            "type": "object",
+            "required": ["age", "city", "preferences"],
+            "properties": {
+              "age": { "type": "integer" },
+              "city": { "type": "string" },
+              "preferences": {
+                "type": "object",
+                "required": ["theme", "notifications"],
+                "properties": {
+                  "theme": { "type": "string" },
+                  "notifications": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

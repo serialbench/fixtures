@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/format-assertion",
+  "title": "canonical dataset document (large)",
+  "type": "object",
+  "required": ["dataset"],
+  "properties": {
+    "dataset": {
+      "type": "object",
+      "required": ["header", "records"],
+      "properties": {
+        "header": {
+          "type": "object",
+          "required": ["created", "count", "format"],
+          "properties": {
+            "created": { "type": "string" },
+            "count": { "type": "integer" },
+            "format": { "type": "string" }
+          }
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "timestamp", "data", "metadata"],
+            "properties": {
+              "id": { "type": "integer" },
+              "timestamp": { "type": "string" },
+              "data": {
+                "type": "object",
+                "required": ["field1", "field2", "field3", "nested"],
+                "properties": {
+                  "field1": { "type": "string" },
+                  "field2": { "type": "integer" },
+                  "field3": { "type": "string" },
+                  "nested": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                }
+              },
+              "metadata": {
+                "type": "object",
+                "required": ["source", "version", "checksum"],
+                "properties": {
+                  "source": { "type": "string" },
+                  "version": { "type": "string" },
+                  "checksum": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
