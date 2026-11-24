@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XSD for the canonical users fixture (small/medium/large share the
+     users/user shape). Element style follows the libxml2 test-suite
+     cases (leptris test/xsd/libxml2-cases) — qualified elements,
+     simple restricted types, no pattern facets so every generated
+     document validates. created_at is typed as string: the generator
+     emits "2023-01-2T10:00:00Z" (single-digit day), not xs:dateTime. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <xs:element name="users">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="user" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="xs:string"/>
+              <xs:element name="email" type="xs:string"/>
+              <xs:element name="created_at" type="xs:string"/>
+              <xs:element name="profile">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="age">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:int">
+                          <xs:minInclusive value="0"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="city" type="xs:string"/>
+                    <xs:element name="preferences">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="theme">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="light"/>
+                                <xs:enumeration value="dark"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="notifications" type="xs:boolean"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:int" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
