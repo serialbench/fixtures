@@ -3,8 +3,7 @@
      users/user shape). Element style follows the libxml2 test-suite
      cases (leptris test/xsd/libxml2-cases) — qualified elements,
      simple restricted types, no pattern facets so every generated
-     document validates. created_at is typed as string: the generator
-     emits "2023-01-2T10:00:00Z" (single-digit day), not xs:dateTime. -->
+     document validates. -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified" attributeFormDefault="unqualified">
 
@@ -16,7 +15,7 @@
             <xs:sequence>
               <xs:element name="name" type="xs:string"/>
               <xs:element name="email" type="xs:string"/>
-              <xs:element name="created_at" type="xs:string"/>
+              <xs:element name="created_at" type="xs:dateTime"/>
               <xs:element name="profile">
                 <xs:complexType>
                   <xs:sequence>
